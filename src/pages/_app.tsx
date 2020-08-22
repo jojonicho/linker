@@ -9,11 +9,11 @@ const MyApp = ({ Component, pageProps }: any) => {
   const { data: user, loading: userLoading } = useMeQuery();
   return (
     <ThemeProvider theme={theme}>
-      {/* <ColorModeProvider> */}
-      <CSSReset />
-      <Navbar data={user!} loading={userLoading} />
-      <Component {...pageProps} />
-      {/* </ColorModeProvider> */}
+      <ColorModeProvider>
+        <CSSReset />
+        <Navbar user={user!} loading={userLoading} />
+        <Component {...pageProps} />
+      </ColorModeProvider>
     </ThemeProvider>
   );
 };
