@@ -8,18 +8,14 @@ import {
   ListItem,
 } from "@chakra-ui/core";
 
-import { Hero } from "../components/Hero";
-import { Container } from "../components/Container";
-import { Main } from "../components/Main";
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { CTA } from "../components/CTA";
-import { Footer } from "../components/Footer";
-import { withApollo } from "../components/utils/withApollo";
+import { withApollo } from "../utils/withApollo";
 
-const Index = () => (
-  <Container>
-    <Hero />
-    <Main>
+const Index = () => {
+  // console.log(API_URL);
+  // console.log(process.browser);
+  console.log(typeof window === "undefined");
+  return (
+    <>
       <Text>
         Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code>.
       </Text>
@@ -43,15 +39,9 @@ const Index = () => (
           </ChakraLink>
         </ListItem>
       </List>
-    </Main>
-
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
-  </Container>
-);
+    </>
+  );
+};
 
 // export default Index;
 export default withApollo({ ssr: true })(Index);
