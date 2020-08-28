@@ -1,0 +1,21 @@
+query Linkers($limit: Int!, $cursor: String) {
+  linkers(limit: $limit, cursor: $cursor) {
+    linkers {
+      id
+      date
+      title
+      description
+      user {
+        id
+        username
+        email
+        image
+      }
+      links {
+        id
+        url
+      }
+    }
+    hasMore
+  }
+}

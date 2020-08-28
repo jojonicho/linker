@@ -13,6 +13,7 @@ import {
   FormControl,
   FormErrorMessage,
   Button,
+  Stack,
 } from "@chakra-ui/core";
 
 const LoginContainer = styled.div`
@@ -36,7 +37,7 @@ const Register = () => {
     shouldFocusError: true,
     shouldUnregister: true,
   });
-  // const [login, { loading }] = useLoginMutation();
+
   const [reg] = useRegisterMutation();
   const onSubmit = async (variables: FormData) => {
     const response = await reg({
@@ -44,9 +45,9 @@ const Register = () => {
     });
     router.push("/login");
   };
-  // console.log(process.browser);
+
   return (
-    <>
+    <Stack mt={20}>
       <LoginContainer>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl
@@ -116,14 +117,14 @@ const Register = () => {
         {/* </FormContainer> */}
         <ChakraLink
           // isExternal
-          href="/register"
+          href="/login"
           flexGrow={1}
           mr={2}
         >
           already have an account? <Icon name="external-link" mx="2px" />
         </ChakraLink>
       </LoginContainer>
-    </>
+    </Stack>
   );
 };
 

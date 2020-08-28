@@ -1,0 +1,9 @@
+mutation UpdateLinker($title: String, $description: String, $id: Int!) {
+  updateLinker(title: $title, description: $description, id: $id) {
+    id
+    date
+    title
+    description
+    userId
+  }
+}

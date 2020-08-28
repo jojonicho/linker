@@ -1,0 +1,6 @@
+mutation CreateLink($url: String!, $linkerId: Int!) {
+  createLink(url: $url, linkerId: $linkerId) {
+    id
+    url
+  }
+}

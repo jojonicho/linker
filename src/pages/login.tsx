@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useLoginMutation, MeDocument, MeQuery } from "../generated/graphql";
-import { setAccessToken } from "../utils/accessToken";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import Link from "next/link";
@@ -14,14 +13,8 @@ import {
   FormControl,
   FormErrorMessage,
   Button,
+  Stack,
 } from "@chakra-ui/core";
-
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 type FormData = {
   email: string;
@@ -36,15 +29,15 @@ const Login = () => {
     shouldFocusError: true,
     shouldUnregister: true,
   });
-  const [login] = useLoginMutation();
+  const [login, { client }] = useLoginMutation();
   const onSubmit = async ({ email, password }: any) => {
-    const response = await login({
+    await login({
       variables: {
         email,
         password,
       },
       // cache
-      update: (cache, { data }) => {
+      update: (cache, { data }): any => {
         if (!data) return null;
         cache.writeQuery<MeQuery>({
           query: MeDocument,
@@ -53,15 +46,14 @@ const Login = () => {
             me: data.login,
           },
         });
-        // cache.evict({})
+        cache.evict({ fieldName: "linkers" });
       },
     });
     router.push("/");
   };
   return (
-    <>
-      <LoginContainer>
-        {/* <FormContainer> */}
+    <Stack mt={20} p={3} align="center" justify="center">
+      <Stack align="center" justify="center">
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl
             isInvalid={Boolean(
@@ -111,17 +103,11 @@ const Login = () => {
             </Button>
           </FormControl>
         </form>
-        {/* </FormContainer> */}
-        <ChakraLink
-          // isExternal
-          href="/register"
-          flexGrow={1}
-          mr={2}
-        >
-          or Register for an account <Icon name="external-link" mx="2px" />
-        </ChakraLink>
-      </LoginContainer>
-    </>
+      </Stack>
+      <ChakraLink href="/register" flexGrow={1} mr={2}>
+        or Register for an account <Icon name="external-link" mx="2px" />
+      </ChakraLink>
+    </Stack>
   );
 };
 

@@ -1,0 +1,3 @@
+mutation DeleteLinker($id: Int!) {
+  deleteLinker(id: $id)
+}

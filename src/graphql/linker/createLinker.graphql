@@ -1,0 +1,9 @@
+mutation CreateLinker($title: String!, $description: String!) {
+  createLinker(input: { title: $title, description: $description }) {
+    id
+    date
+    title
+    description
+    userId
+  }
+}

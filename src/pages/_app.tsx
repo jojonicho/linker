@@ -2,7 +2,7 @@ import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 
 import theme from "../theme";
 import { withApollo } from "../utils/withApollo";
-import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/Navbar/Navbar";
 import { useMeQuery } from "../generated/graphql";
 
 const MyApp = ({ Component, pageProps }: any) => {
