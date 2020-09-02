@@ -94,9 +94,9 @@ export const Navbar: React.FC<NavbarProps> = ({ user, loading }) => {
             {loading ? (
               <Spinner />
             ) : !loading && user && user.me ? (
-              <Popover trigger="hover" placement="bottom">
+              <Popover trigger="click" placement="bottom">
                 <PopoverTrigger>
-                  <Img src={user.me.image} onClick={onOpen} />
+                  <Img src={user.me.image} />
                 </PopoverTrigger>
                 <SettingsPopover
                   id={user.me.id}

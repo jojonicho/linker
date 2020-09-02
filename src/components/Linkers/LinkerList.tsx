@@ -58,9 +58,6 @@ export const LinkerList = () => {
     });
   };
   const editLink = async (linkId: number, url: string) => {
-    console.log(url);
-    console.log(url === "");
-    console.log(linkId);
     if (url === "") {
       await delLnk({
         variables: {
