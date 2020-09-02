@@ -3,7 +3,7 @@
 
 # Notion/Google Docs Clone​ with NextJS, Typescript, and Apollo GraphQL
 
-![linker](./linker.png)
+![linker](https://github.com/jojonicho/portfolio/blob/master/static/projects/2020-09-01/linker.png)
 
 - Beautiful UI using React, Typescript, and Chakra-UI with dark/light theming.
 - Google docs-like editable input fields that automatically save after typing.
