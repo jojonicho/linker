@@ -40,7 +40,7 @@ const Register = () => {
 
   const [reg] = useRegisterMutation();
   const onSubmit = async (variables: FormData) => {
-    const response = await reg({
+    await reg({
       variables,
     });
     router.push("/login");
@@ -114,13 +114,7 @@ const Register = () => {
             </Button>
           </FormControl>
         </form>
-        {/* </FormContainer> */}
-        <ChakraLink
-          // isExternal
-          href="/login"
-          flexGrow={1}
-          mr={2}
-        >
+        <ChakraLink href="/login" flexGrow={1} mr={2}>
           already have an account? <Icon name="external-link" mx="2px" />
         </ChakraLink>
       </LoginContainer>

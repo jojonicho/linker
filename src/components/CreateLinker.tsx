@@ -19,12 +19,27 @@ import { useForm } from "react-hook-form";
 import {
   useCreateLinkerMutation,
   CreateLinkerMutationVariables,
+  LinkersQuery,
+  LinkersDocument,
 } from "../generated/graphql";
+import updateApolloCache from "../utils/cache";
+import produce from "immer";
 
 export const CreateLinkerButton = () => {
   const { handleSubmit, formState, register } = useForm();
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const [lnk] = useCreateLinkerMutation();
+  const [lnk] = useCreateLinkerMutation({
+    // update: (client, createData) => {
+    //   updateApolloCache<LinkersQuery>(
+    //     client,
+    //     LinkersDocument,
+    //     (cache) =>
+    //       produce(cache, (draftCache) => {
+    //         draftCache.linkers.linkers.push({ ...createData.data!.createLinker });
+    //       })
+    //   );
+    // },
+  });
   const onSubmit = async (variables: CreateLinkerMutationVariables) => {
     await lnk({
       variables,
